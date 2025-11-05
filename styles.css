@@ -1,0 +1,230 @@
+:root {
+  --bg: #233842;
+  --nav: #e7ecef;
+  --nav-text: #222;
+  --card: #f3f6f8;
+  --text: #0f1720;
+  --accent: #2b74ea;
+  --shadow-strong: 0 26px 60px rgba(0, 0, 0, .35);
+  --shadow: 0 12px 30px rgba(0, 0, 0, .18);
+  --radius: 22px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: #ffffff;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  padding: 16px 22px;
+  background: var(--nav);
+  color: var(--nav-text);
+  border-bottom: 1px solid #d6dee3;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: .8px;
+}
+.lock {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #2b74ea;
+  color: #fff;
+}
+.nav a {
+  color: var(--nav-text);
+  text-decoration: none;
+  font-weight: 600;
+  opacity: .9;
+}
+.nav a.active {
+  opacity: 1;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 28px auto 80px;
+  padding: 0 18px;
+}
+.card {
+  background: var(--card);
+  color: var(--text);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 44px 32px 40px;
+}
+
+/* TITLE + TODAY’S MEALS */
+h1 {
+  margin: 0 0 22px;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: .6px;
+  text-align: center;
+}
+.today-pill {
+  margin: 0 auto 28px;
+  width: min(420px, 92%);
+  background: #dddfe3;
+  border-radius: 50px;
+  padding: 22px 20px;
+  text-align: center;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .06);
+}
+.tm-title {
+  font-family: "Merriweather", serif;
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+.today-pill small {
+  color: #37424a;
+  font-weight: 600;
+  display: block;
+}
+
+/* MEAL LIST */
+.meal-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 26px;
+}
+.meal {
+  display: grid;
+  grid-template-columns: 64px 1fr 52px;
+  align-items: center;
+  gap: 12px;
+  background: #f7fafc;
+  border: 1px solid #e6edf2;
+  border-radius: 999px;
+  padding: 14px 16px;
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  background: #fff;
+  border: 1px solid #e6edf2;
+  border-radius: 999px;
+}
+.label {
+  font-weight: 800;
+  font-size: 32px;
+  color: #13202a;
+}
+.add {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  text-decoration: none;
+  background: #111;
+  color: #fff;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+/* POPUP */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s ease;
+}
+#eat:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+.overlay-close {
+  position: absolute;
+  inset: 0;
+  display: block;
+  content: "";
+}
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(520px, 92vw);
+  background: #fff;
+  color: #111;
+  border-radius: 26px;
+  padding: 26px 26px 28px;
+  box-shadow: var(--shadow-strong);
+  text-align: center;
+}
+.close-x {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #334155;
+  background: #f3f6f9;
+  border: 1px solid #e5edf3;
+  font-size: 20px;
+}
+.modal h2 {
+  margin: 8px 0 16px;
+  font-size: 40px;
+  font-weight: 800;
+  color: #111;
+}
+.pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: min(360px, 90%);
+  height: 44px;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .05);
+}
+.pill-ghost {
+  background: #e5e8ec;
+  color: #71808c;
+  border: 1px solid #dfe6eb;
+}
+.pill-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.pill-primary .apple {
+  font-size: 20px;
+  line-height: 1;
+}
+
+@media (max-width: 640px) {
+  h1 { font-size: 34px; }
+  .label { font-size: 22px; }
+}
